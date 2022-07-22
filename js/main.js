@@ -77,6 +77,7 @@ btnComprar1.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 1));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 
 }
 
@@ -84,36 +85,42 @@ btnComprar2.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 2));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar3.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 3));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar4.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 4));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar5.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 5));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar6.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 6));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar7.onclick = () => {
     carritoDeCompra.push(productos.find((el) => el.id === 7));
     console.log(carritoDeCompra);
     carritoCompleto();
+    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
 }
 
 btnComprar8.onclick = () => {
