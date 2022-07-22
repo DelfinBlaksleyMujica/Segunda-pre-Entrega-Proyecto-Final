@@ -136,8 +136,7 @@ function carritoCompleto(){
     let html;
     for (const producto of carritoDeCompra) {
         html = `
-    <section class="carritoFinal__container">
-    <hr>
+    <section class="animate__animated animate__fadeInRight carritoFinal__container">
     <h3>Se añade al carrito:</h3>
     <hr>
 

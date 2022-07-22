@@ -118,6 +118,9 @@ body {
     height:80px;
 }
 
+.carritoFinal__container{
+    border-radius: 20px;
+}
 
 .aviso__carritoDeCompras{
 background-color:greenyellow;
@@ -136,6 +139,22 @@ border:solid 5px black;
 .aviso__carritoDeCompras p{
     font-family: "Russo One";
 }
+
+#btnEliminar{
+    font-family: "Bungee";
+    background-color: black;
+    border: solid white 2px;
+    color:white;
+}
+
+#btnEliminar:hover{
+    font-family: "Bungee";
+    background-color: white;
+    border: solid black 2px;
+    color:black;
+}
+
+
 
 #merchandise__cards__container{
     display:flex;
