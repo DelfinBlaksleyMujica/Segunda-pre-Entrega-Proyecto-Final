@@ -48,12 +48,16 @@ function crearCards(array) {
 crearCards(productos);
 
 
+//Almacenar Carrito De Compras en Local Storage
+
+const guardarLocal = (clave, valor) => {
+    localStorage.setItem(clave,valor)
+};
+
+
+
+
 //Agregado de productos al carrito de compras
-
-
-
-
-
 
 
 
@@ -187,11 +191,5 @@ btnBuscadorMerchandise.onclick = (e) => {
     cardsContainer.innerHTML = "";
     let filtro = filtrarProductos(search.value);
     crearCards(filtro);
-};
-
-//Almacenar Carrito De Compras en Local Storage
-
-const guardarLocal = (clave, valor) => {
-    localStorage.setItem(clave,valor)
 };
 
