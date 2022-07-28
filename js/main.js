@@ -1,51 +1,183 @@
+//USUARIOS
+const usuarios = [];
+
+class NuevoUsuario{
+    constructor(nombre,email,edad,sexo,barrio){
+        this.nombre = nombre;
+        this.email = email;
+        this.edad = parseInt(edad);
+        this.sexo = sexo;
+        this.barrio = barrio;
+    }
+}
+
+function crearUsuario(nombre,email,edad,sexo,barrio){
+    const usuario = new NuevoUsuario (nombre,email,edad,sexo,barrio);
+    return usuario;
+}
+
+function cargarUsuario(usuario){
+    usuarios.push(usuario);
+}
+
+
+
+(async () => {
+
+    const { value: formValues } = await Swal.fire({  
+    title: 'Suscribite!',
+    background:'white ',   
+    html:
+        '<input id="swal-input1" class="swal-input" placeholder="Ingresa tu nombre">' +
+        '<input id="swal-input2" class="swal-input" placeholder="Ingresa tu email">' +
+        '<input id="swal-input3" class="swal-input" placeholder="Ingresa tu edad">' +
+        '<input id="swal-input4" class="swal-input" placeholder="Ingresa tu sexo">' +
+        '<input id="swal-input5" class="swal-input" placeholder="Ingresa tu barrio">',
+    showCancelButton: true,
+    confirmButtonText: 'Registrarme',
+    cancelButtonText: 'Salir!',
+    focusConfirm: false,
+    preConfirm: () => {
+        return [
+        nombre = document.getElementById('swal-input1').value,
+        email = document.getElementById('swal-input2').value,
+        edad = document.getElementById('swal-input3').value,
+        sexo = document.getElementById('swal-input4').value,
+        barrio = document.getElementById('swal-input5').value,
+        ]
+    }
+    })
+    
+    if (formValues) {
+        cargarUsuario(crearUsuario(nombre,email,edad,sexo,barrio));
+        guardarLocal("Suscriptores", JSON.stringify(usuarios));
+        console.log(usuarios);
+    }
+    
+    })()
+
+
+
+/*
+
+
+informacionCompra = document.getElementById("informacionDeCompra__container")
+
+
+
+
+const hombres = usuarios.filter((el) => el.sexo.includes("Masculino"));
+console.log(hombres);
+
+const mujeres = usuarios.filter((el) => el.sexo.includes("Femenino"));
+console.log(mujeres);
+
+const emails = usuarios.map((el) => el.email);
+console.log(emails);
+
+const adolescentes = usuarios.filter((el) => (el.edad < 21));
+console.log(adolescentes);
+
+const jovenes = usuarios.filter((el) => (el.edad < 27));
+console.log(jovenes);
+
+
+const buscado = usuarios.find((el) => el.barrio === "Microcentro");
+console.log(buscado);*/
+
+
+
+
+
+
+
+
+
+//CARRITO DE COMPRAS
+
+
+
+
+
+
 const productos = [
-    {id: 1, nombre: "remera Activa 1", precio: 2800, img:"./img/remera1Activa.png"},
-    {id: 2, nombre: "remera Activa 2", precio:3200,img:"./img/remera2Activa.png"},
-    {id: 3, nombre:"remera Activa 3", precio: 3500, img:"./img/remera3Activa.png"},
-    {id: 4, nombre: "buzo Activa 1", precio: 6800, img: "./img/buzo1Activa.png"},
-    {id: 5, nombre:"buzo Activa 2", precio:7500, img:"./img/buzo2Activa.png"},
-    {id: 6, nombre: "buzo Activa 3", precio: 9800, img:"./img/buzo3Activa.png"},
-    {id: 7, nombre: "perlas Activa", precio: 14700, img:"./img/perlasActiva.png"},
-    {id: 8, nombre: "colgante Activa", precio: 10000, img:"./img/colganteActiva.png" },
+    {id: 1, nombre: "REMERA ACTIVA 1", precio: 2800, img:"./img/remera1Activa.png"},
+    {id: 2, nombre: "REMERA ACTIVA 2", precio:3200,img:"./img/remera2Activa.png"},
+    {id: 3, nombre:"REMERA ACTIVA 3", precio: 3500, img:"./img/remera3Activa.png"},
+    {id: 4, nombre: "BUZO ACTIVA 1", precio: 6800, img: "./img/buzo1Activa.png"},
+    {id: 5, nombre:"BUZO ACTIVA 2", precio:7500, img:"./img/buzo2Activa.png"},
+    {id: 6, nombre: "BUZO ACTIVA 3", precio: 9800, img:"./img/buzo3Activa.png"},
+    {id: 7, nombre: "PERLAS ACTIVA", precio: 14700, img:"./img/perlasActiva.png"},
+    {id: 8, nombre: "COLGANTE ACTIVA", precio: 10000, img:"./img/colganteActiva.png" },
 ];
+
+//Contador en el carrito de compras
+
+const carrito = []
+
+const cardsContainer = document.getElementById("merchandise__cards__container")
+
+const iconCart = document.querySelector("#iconCart")
+let cartNumber = document.createElement("span")
+cartNumber.innerText = 0
+iconCart.appendChild(cartNumber)
+
+function addToCart (id) {
+    carrito.push ( productos.find ( r => r.id == id ))
+    cartNumber.innerText = carrito.length;
+    guardarLocal("Carrito de compra",JSON.stringify(carrito));
+    console.log(carrito);
+    
+    Toastify({
+
+        text: "Se agrego al carrito exitosamente",        
+        duration: 16000,
+        close: true,
+        gravity: "bottom",
+        position: "right", 
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "greenyellow",
+        
+        }}).showToast();
+    
+}
+
 
 
 //Despliegue de productos en html dependiente de array de productos  
 
-const cardsContainer = document.getElementById("merchandise__cards__container");
-
-function crearCards(array) {
-    let html;
-    for (const producto of array) {
-
-        html= `
+let html = productos.map ( (producto) => {
+    return (
+        `
         <div class="">
-        <div class="card">
-            <div class="card-image">
+            <div class="card">
+                <div class="card-image">
 
-                <img src="${producto.img}">
+                    <img src="${producto.img}">
                 
-            </div>
+                </div>
         
-            <div class="card-content">
+                <div class="card-content">
         
-                <span class="card-title">${producto.nombre.toUpperCase()}</span>
-                <p>$${producto.precio}</p>
+                    <span class="card-title">${producto.nombre.toUpperCase()}</span>
+                    <p>$${producto.precio}</p>
         
-            </div>
+                </div>
             
-            <div class="card-action">
-                <button type="button" id="${producto.id}" class="btnComprar" value="Comprar">Comprar</button>
+                <div class="card-action">
+                    <button type="button"   onClick="addToCart(${producto.id})" class="btnComprar" value="Comprar">Comprar</button>
+                </div>
+
             </div>
-
-        </div>
         </div>`
+    )
+})
 
-        cardsContainer.innerHTML += html;
-    }
-}
+cardsContainer.innerHTML = html
 
-crearCards(productos);
+
+
 
 
 //Almacenar Carrito De Compras en Local Storage
@@ -55,127 +187,9 @@ const guardarLocal = (clave, valor) => {
 };
 
 
-
-
-//Agregado de productos al carrito de compras
-
-
-
-const btnComprar1 = document.getElementById("1"),
-btnComprar2 = document.getElementById("2"),
-btnComprar3 = document.getElementById("3"),
-btnComprar4 = document.getElementById("4"),
-btnComprar5 = document.getElementById("5"),
-btnComprar6 = document.getElementById("6"),
-btnComprar7 = document.getElementById("7"),
-btnComprar8 = document.getElementById("8"),
-btnComprar9 = document.getElementById("9");
-
-const carritoDeCompra = [];
-
-
-const detallesDeCompra = carritoDeCompra.map((el) => el.nombre),
-totalDeCompra = carritoDeCompra.reduce ((acc,el) => acc + el.precio,0);
-
-btnComprar1.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 1));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-
-}
-
-btnComprar2.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 2));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar3.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 3));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar4.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 4));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar5.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 5));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar6.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 6));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar7.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 7));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-}
-
-btnComprar8.onclick = () => {
-    carritoDeCompra.push(productos.find((el) => el.id === 8));
-    console.log(carritoDeCompra);
-    carritoCompleto();
-    guardarLocal("Carrito de compra",JSON.stringify(carritoDeCompra));
-
-}
-
-
-
-//Carrito de compras comlpeto
-
-const contenedor = document.getElementById("contenedor"),
-btnCarrito = document.getElementById("btnCarrito");
-
-
-function carritoCompleto(){
-    let html;
-    for (const producto of carritoDeCompra) {
-        html = `
-    <section class="animate__animated animate__fadeInRight carritoFinal__container">
-    <h3>Se añade al carrito:</h3>
-    <hr>
-
-    <div class="producto__carritoFinal__container">
-    
-    <div>
-    <img class="imagen__carrito__final" src="${producto.img}">
-    <div>
-    <div>
-    <span class="card-title">${producto.nombre.toUpperCase()}</span>
-    </div>
-    <div> 
-    <p>$${producto.precio}</p>
-    <button type="button" id="btnEliminar" value="Eliminar">Eliminar</button>
-    </div>
-
-    </div>
-    </section>`
-}
-
-contenedor.innerHTML += html;
-    }
-
-
 //Buscdor
 
-const btnBuscadorMerchandise = document.getElementById("btn__buscador__merchandise"),
-search = document.getElementById("buscador");
+const search = document.getElementById("buscador");
 
 
 function filtrarProductos(filtro){
@@ -186,10 +200,38 @@ function filtrarProductos(filtro){
 };
 
 
-btnBuscadorMerchandise.onclick = (e) => {
+search.addEventListener("keyup" , (e) => {
     e.preventDefault();
     cardsContainer.innerHTML = "";
-    let filtro = filtrarProductos(search.value);
-    crearCards(filtro);
-};
+    let filtro = filtrarProductos(search.value.toUpperCase());
+    let html = filtro.map ( (producto) => {
+        return (
+            `
+            <div class="">
+                <div class="card">
+                    <div class="card-image">
+    
+                        <img src="${producto.img}">
+                    
+                    </div>
+            
+                    <div class="card-content">
+            
+                        <span class="card-title">${producto.nombre.toUpperCase()}</span>
+                        <p>$${producto.precio}</p>
+            
+                    </div>
+                
+                    <div class="card-action">
+                        <button type="button"   onClick="addToCart(${producto.id})" class="btnComprar" value="Comprar">Comprar</button>
+                    </div>
+    
+                </div>
+            </div>`
+        )
+    })
+    
+    cardsContainer.innerHTML = html
+    
+})
 

@@ -12,7 +12,12 @@
     <meta name="keywords" content="Ropa,Ofertas Exclusivas,Trap,LifeStyle,Compra,Remeras,Collares,Pantalones,Moda">
     <meta name="description" content="Activa merchandise. Sabemos lo que te gusta porque nos gusta lo mismo. Las mejores ofertas y variedad de productos">
 
-    <!--Estilos-->
+
+    <!--Librerias JS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+    <!--Estilos propios-->
     <link rel="shortcut icon" href="./img/ACTIVÁ STUDIO PIXELATED - negro (1).png" type="image/x-icon">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,15 +61,14 @@
 
             <div class="merchandise__mainFilter__container">
                 <input type="search" name="" id="buscador" placeholder="Buscar por nombre">
-                <input type="submit" id="btn__buscador__merchandise" value="Buscar"></input>
-                <div>
+                <div id="iconCart" class="cartContainer">
                     <img src="./img/7.webp" alt="" class="merchandise__carritoLogo">
                 </div>
                 
             </div>
         
             <div id="merchandise__cards__container">
-                
+                <!--Contenido Dinamico-->
                 
             </div>
 
@@ -90,6 +94,8 @@
 
     
         
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script src="./js/main.js">
 

@@ -99,24 +99,29 @@ body {
     border-radius:10px;
 }
 
-#btn__buscador__merchandise{
-    color:white;
-    background-color: black;
-    border: solid 2px white;
-    font-family: "Bungee";
-}
-
-#btn__buscador__merchandise:hover{
-    color:black;
-    background-color: white;
-    border: solid 2px black;
-    font-family: "Bungee";
-}
 
 .merchandise__carritoLogo{
     width:140px;
     height:80px;
 }
+
+#iconCart{
+    color:black;
+    font-family: "Bungee";
+    font-size:20px;
+    position:relative;
+}
+
+/*#iconCart img{
+    
+}*/
+
+#iconCart span{
+    position:absolute;
+    top: 18%;
+    right: 39%;
+}
+
 
 .carritoFinal__container{
     border-radius: 20px;
@@ -229,6 +234,47 @@ border:solid 5px black;
     border-radius: 50px;
 }
 
+
+.swal-input{
+    font-family: "Russo One";
+    margin-top: 10px;
+    background:linear-gradient(to left, silver, white);
+    border-radius: 10px;
+
+
+}
+
+.swal2-popup{
+    width:250px;
+    height:400px;
+}
+
+.swal2-show{
+    border:2px white solid;
+}
+
+#swal2-title{
+    color:black;
+    font-family: "Bungee";
+}
+
+.swal2-styled.swal2-confirm {
+    border:black;
+    border-radius: 0.25em;
+    background: initial;
+    background-color: white;
+    color: black;
+    font-size: 1em;
+}
+
+.toastify{
+    color: black;
+    font-family: "Bungee";
+}
+
+.toast-close{
+    color:black;
+}
 
 .merchandise__main__margin1 { grid-area: merchandise__main__margin1; }
 
